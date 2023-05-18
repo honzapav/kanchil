@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Viděl někdo Kančila? </title>
+    <title>Viděl někdo Kančila?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Work Sans', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
         }
         h1 {
             background-color: #4CAF50;
@@ -47,17 +53,19 @@
     </style>
 </head>
 <body>
-    <h1>Kančil - Malý jelen myši</h1>
-    <h3>Nejmenší zvířátko, co má kopýtka</h3>
+    <div class="container">
+        <h1>Kančil - Malý jelen myši</h1>
+        <h3>Nejmenší zvířátko, co má kopýtka</h3>
 
-    <h2>Obecné informace</h2>
-    <p>Kančil, také známý jako Malý jelen myši, je malý sudokopytník, který je původem z jihovýchodní Asie. Jeho vědecké jméno je Tragulus kanchil. Je známý svou malou velikostí, dospělci obvykle váží mezi 0,7 a 8 kilogramy. Přestože je kančil nazýván jelenem, je členem rodiny Tragulidae. Je to býložravec, který se živí listy, výhonky, plody a houbami v tropických deštných pralesích, které nazývá domovem.</p>
+        <h2>Obecné informace</h2>
+        <p>Kančil, také známý jako Malý jelen myši, je malý sudokopytník, který je původem z jihovýchodní Asie. Jeho vědecké jméno je Tragulus kanchil. Je známý svou malou velikostí, dospělci obvykle váží mezi 0,7 a 8 kilogramy. Přestože je kančil nazýván jelenem, je členem rodiny Tragulidae. Je to býložravec, který se živí listy, výhonky, plody a houbami v tropických deštných pralesích, které nazývá domovem.</p>
 
-    <h2>Fotogalerie</h2>
-    <div>
-        <img src="http://example.com/kanchil1.jpg" alt="Fotografie Kančila 1" style="width:30%">
-        <img src="http://example.com/kanchil2.jpg" alt="Fotografie Kančila 2" style="width:30%">
-        <img src="http://example.com/kanchil3.jpg" alt="Fotografie Kančila 3" style="width:30%">
+        <h2>Fotogalerie</h2>
+        <div class="gallery">
+            <img src="https://via.placeholder.com/150" alt="Fotografie Kančila 1">
+            <img src="https://via.placeholder.com/150" alt="Fotografie Kančila 2">
+            <img src="https://via.placeholder.com/150" alt="Fotografie Kančila 3">
+        </div>
     </div>
 </body>
 </html>
