@@ -1,87 +1,692 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Viděl někdo Kančila 🦌🦌🦌?</title>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viděl někdo Kančila? 🦌🦌🦌</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Work Sans', sans-serif;
+        :root {
+            --primary-color: #2E7D32;
+            --primary-light: #4CAF50;
+            --secondary-color: #FFC107;
+            --text-color: #263238;
+            --text-light: #607D8B;
+            --background: #F5F9EE;
+            --card-bg: #ffffff;
+            --success: #00C853;
+            --danger: #FF5252;
+            --border-radius: 12px;
+            --border-radius-sm: 8px;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 24px;
         }
-        h1 {
-            background-color: #4CAF50;
+
+        /* Header styling */
+        header {
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.9), rgba(76, 175, 80, 0.8)),
+                url('https://images.pexels.com/photos/975771/pexels-photo-975771.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 80px;
+            margin-bottom: 60px;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .header-content {
+            text-align: center;
             color: white;
-            padding: 20px;
-            margin: 0;
-            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
-        h3 {
-            text-align: center;
-            color: #333;
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        p {
-            color: #333;
+
+        .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .gallery {
-            display: flex;
-            justify-content: space-between;
+
+        /* Main content */
+        main {
+            padding-bottom: 80px;
         }
-        .gallery img {
-            margin: 5px;
-            border: 1px solid #ddd;
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
             border-radius: 4px;
-            padding: 5px;
-            width: calc(100% / 3 - 10px);
         }
-        @media (max-width: 600px) {
-            .gallery img {
-                width: 100%;
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 1.5rem 0;
+            color: var(--primary-color);
+        }
+
+        p {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Card styling */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 32px;
+            margin-bottom: 40px;
+            border-top: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Video container */
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 2rem 0;
+        }
+
+        .video-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 0;
+            padding-bottom: 56.25%;
+            /* 16:9 Aspect Ratio */
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .video-card iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Gallery improvements */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            aspect-ratio: 4 / 3;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.7s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-item .caption {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            color: white;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item:hover .caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Zoo list styling */
+        .zoo-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .zoo-list {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .zoo-list:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .zoo-list h3 {
+            text-align: left;
+            margin-top: 0;
+            margin-bottom: 24px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .zoo-list h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .zoo-list p {
+            margin: 12px 0;
+            padding: 8px 16px;
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .zoo-list p:hover {
+            background-color: rgba(76, 175, 80, 0.07);
+            transform: translateX(5px);
+        }
+
+        .zoo-list p::before {
+            content: '•';
+            font-size: 1.5em;
+            color: var(--primary-light);
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--primary-light);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1B5E20, #2E7D32);
+            color: white;
+            text-align: center;
+            padding: 60px 0 40px;
+            position: relative;
+            width: 100%;
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .footer-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-content h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-        .gallery img:hover {
-            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+
+        .animate {
+            opacity: 0;
+        }
+
+        .animated {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                padding: 0 20px;
+            }
+
+            header {
+                padding: 100px 0 60px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.4rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .zoo-list {
+                padding: 24px;
+            }
+
+            header {
+                padding: 80px 0 60px;
+            }
+
+            footer {
+                padding: 50px 0 30px;
+            }
+        }
+
+        /* Styles for the map */
+        .map-container {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #map {
+            width: 100%;
+            height: 500px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .map-info {
+            padding: 20px;
+            background-color: var(--card-bg);
+        }
+
+        .map-tip {
+            text-align: center;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 0;
+        }
+
+        .location-popup h4 {
+            color: var(--primary-color);
+            margin: 0 0 5px 0;
+            font-weight: 600;
+        }
+
+        .location-popup p {
+            margin: 0 0 5px 0;
+            font-size: 0.9rem;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Viděl někdo Kančila? 🦌🦌🦌</h1>
-        <h3>Nejmenší zvířátko, co má kopýtka</h3>
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
-        <h2>Obecné informace</h2>
-        <p>Kančil, také známý jako Malý jelen myši, je malý sudokopytník, který je původem z jihovýchodní Asie. Jeho vědecké jméno je Tragulus kanchil. Je známý svou malou velikostí, dospělci obvykle váží mezi 0,7 a 8 kilogramy. Přestože je kančil nazýván jelenem, je členem rodiny Tragulidae. Je to býložravec, který se živí listy, výhonky, plody a houbami v tropických deštných pralesích, které nazývá domovem.</p>
-
-        <h2>Kančil zachycen 📹</h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/gH238EApZ6g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/pYQSDj6tFWU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-        <h2>Kde v Evropě vidět kančila 🔍</h2>
-        <h3>European Union</h3>
-        <p><strong>Belgie:</strong> Cambron-Casteau (Pairi Daiza)</p>
-        <p><strong>Dánsko:</strong> Kobenhavn (Zoo), Randers (Randers Regnskov)</p>
-        <p><strong>Francie:</strong> Lille (Zoo), Saint Aignan (ZooParc de Beauval)</p>
-        <p><strong>Německo:</strong> Berlin (Zoologischer Garten), Dresden (Zoo), Frankfurt/Main (Zoo), Stuttgart (Wilhelma)</p>
-        <p><strong>Nizozemí:</strong> Alphen aan den Rijn (Vogelpark Avifauna), Amsterdam (Artis Zoo / Natura Artis Magistra), Rhenen (Ouwehands Dierenpark)</p>
-        <p><strong>Polsko:</strong> Lodz (Zoo), Poznan (Nowe Zoo), Warszawa (Zoo)</p>
-        <p><strong>Španělsko:</strong> Fuengirola (Bioparc)</p>
-
-        <h3>Non-EU and other EAZA countries</h3>
-        <p><strong>Switzerland:</strong> Bern (Tierpark), Zürich (Zoo)</p>
-        <p><strong>United Kingdom:</strong> Newquay (Zoo)</p>   
-
-        <h2>Fotogalerie 📸</h2>
-        <div class="gallery">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Tragulus_javanicus_-_Zoo_Frankfurt.jpg/270px-Tragulus_javanicus_-_Zoo_Frankfurt.jpg" alt="Fotografie Kančila 1">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Tragulus_javanicus_Vorderansicht.jpg/220px-Tragulus_javanicus_Vorderansicht.jpg" alt="Fotografie Kančila 2">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Mouse-deer_Singapore_Zoo_2012.JPG/640px-Mouse-deer_Singapore_Zoo_2012.JPG" alt="Fotografie Kančila 3">
+    <header>
+        <div class="header-content">
+            <h1>Viděl někdo Kančila? 🦌</h1>
+            <p class="subtitle">Nejmenší zvířátko, co má kopýtka</p>
         </div>
-    </div>
+    </header>
+
+    <main class="container">
+        <section class="animate">
+            <h2>Obecné informace</h2>
+            <div class="card">
+                <p>Kančil, také známý jako Malý jelen myši, je malý sudokopytník, který je původem z jihovýchodní Asie.
+                    Jeho vědecké jméno je Tragulus kanchil. Je známý svou malou velikostí, dospělci obvykle váží mezi
+                    0,7 a 8
+                    kilogramy. Přestože je kančil nazýván jelenem, je členem rodiny Tragulidae. Je to býložravec, který
+                    se živí listy, výhonky, plody a houbami v tropických deštných pralesích, které nazývá domovem.</p>
+            </div>
+        </section>
+
+        <section class="animate delay-1">
+            <h2>Kančil zachycen 📹</h2>
+            <div class="video-container">
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/gH238EApZ6g" title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/pYQSDj6tFWU" title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="animate delay-2">
+            <h2>Kde v Evropě vidět kančila 🔍</h2>
+            <div class="card map-container">
+                <div id="map"></div>
+                <div class="map-info">
+                    <p class="map-tip">Klikněte na značku pro více informací o zoologické zahradě.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="animate delay-3">
+            <h2>Fotogalerie 📸</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Tragulus_javanicus_-_Zoo_Frankfurt.jpg/270px-Tragulus_javanicus_-_Zoo_Frankfurt.jpg"
+                        alt="Fotografie Kančila 1">
+                    <div class="caption">Kančil v Zoo Frankfurt</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Tragulus_javanicus_Vorderansicht.jpg/220px-Tragulus_javanicus_Vorderansicht.jpg"
+                        alt="Fotografie Kančila 2">
+                    <div class="caption">Kančil zepředu</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Mouse-deer_Singapore_Zoo_2012.JPG/640px-Mouse-deer_Singapore_Zoo_2012.JPG"
+                        alt="Fotografie Kančila 3">
+                    <div class="caption">Kančil v Zoo Singapur</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h3>O projektu Kančil</h3>
+            <p>Tato stránka byla vytvořena pro milovníky kančilů a pro zvýšení povědomí o těchto úžasných malých
+                tvorech.</p>
+            <p>&copy; 2023 Kančil Fan Club</p>
+        </div>
+    </footer>
+
+    <script>
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.animate');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // Map initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            // Wait for Leaflet to load
+            setTimeout(() => {
+                if (typeof L !== 'undefined') {
+                    initMap();
+                }
+            }, 500);
+        });
+
+        function initMap() {
+            // Initialize the map centered on Europe
+            const map = L.map('map').setView([50.5, 10], 4);
+
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            // Define locations where Kančil can be seen
+            const locations = [
+                { name: "Pairi Daiza", city: "Cambron-Casteau", country: "Belgie", lat: 50.5873, lng: 3.8861 },
+                { name: "Zoo Copenhagen", city: "Kodaň", country: "Dánsko", lat: 55.6761, lng: 12.5683 },
+                { name: "Randers Regnskov", city: "Randers", country: "Dánsko", lat: 56.4607, lng: 10.0364 },
+                { name: "Lille Zoo", city: "Lille", country: "Francie", lat: 50.6365, lng: 3.0635 },
+                { name: "ZooParc de Beauval", city: "Saint Aignan", country: "Francie", lat: 47.2481, lng: 1.3522 },
+                { name: "Zoologischer Garten", city: "Berlín", country: "Německo", lat: 52.5079, lng: 13.3372 },
+                { name: "Zoo Dresden", city: "Drážďany", country: "Německo", lat: 51.0504, lng: 13.7373 },
+                { name: "Zoo Frankfurt", city: "Frankfurt", country: "Německo", lat: 50.1109, lng: 8.6821 },
+                { name: "Wilhelma", city: "Stuttgart", country: "Německo", lat: 48.8048, lng: 9.2087 },
+                { name: "Vogelpark Avifauna", city: "Alphen aan den Rijn", country: "Nizozemí", lat: 52.1343, lng: 4.6597 },
+                { name: "Artis Zoo", city: "Amsterdam", country: "Nizozemí", lat: 52.3660, lng: 4.9165 },
+                { name: "Ouwehands Dierenpark", city: "Rhenen", country: "Nizozemí", lat: 51.9633, lng: 5.5881 },
+                { name: "Zoo Lodz", city: "Lodž", country: "Polsko", lat: 51.7592, lng: 19.4560 },
+                { name: "Nowe Zoo", city: "Poznaň", country: "Polsko", lat: 52.4008, lng: 16.9486 },
+                { name: "Warsaw Zoo", city: "Varšava", country: "Polsko", lat: 52.2550, lng: 21.0235 },
+                { name: "Bioparc Fuengirola", city: "Fuengirola", country: "Španělsko", lat: 36.5507, lng: -4.6249 },
+                { name: "Tierpark Bern", city: "Bern", country: "Švýcarsko", lat: 46.9480, lng: 7.4474 },
+                { name: "Zoo Zürich", city: "Curych", country: "Švýcarsko", lat: 47.3844, lng: 8.5784 },
+                { name: "Newquay Zoo", city: "Newquay", country: "Velká Británie", lat: 50.4155, lng: -5.0826 }
+            ];
+
+            // Create icon for map markers
+            const kanchilIcon = L.icon({
+                iconUrl: 'https://img.icons8.com/color/48/000000/deer.png',
+                iconSize: [30, 30],
+                iconAnchor: [15, 30],
+                popupAnchor: [0, -30]
+            });
+
+            // Add markers for each location
+            locations.forEach(location => {
+                const marker = L.marker([location.lat, location.lng], { icon: kanchilIcon }).addTo(map);
+
+                const popupContent = `
+                    <div class="location-popup">
+                        <h4>${location.name}</h4>
+                        <p><strong>Město:</strong> ${location.city}</p>
+                        <p><strong>Země:</strong> ${location.country}</p>
+                    </div>
+                `;
+
+                marker.bindPopup(popupContent);
+            });
+        }
+    </script>
+
+    <!-- Leaflet CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
 </body>
+
 </html>
